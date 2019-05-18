@@ -5,20 +5,13 @@ import './style.css';
 
 class App extends Component {
   constructor() {
-    super();
+    
     this.state = {
       name: 'React'
     };
   }
 
-  render() {
-    return (
-      <div>
-        <Buscador/>
-        
-      </div>
-    );
-  }
+  render() {return (<div><Buscador/></div>);}
 }
 
 render(<App />, document.getElementById('root'));
