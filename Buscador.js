@@ -6,6 +6,7 @@ const endpoint = 'https://api.unsplash.com/search/photos';
 export default class Buscador extends React.Component {
 
   constructor() {
+    super();
     this.query = '';
     this.trackQueryValue = this.trackQueryValue.bind(this);
     this.search = this.search.bind(this);
@@ -31,22 +32,21 @@ export default class Buscador extends React.Component {
   }
 
   images() {
-    return this.state.images.map(image => {
-      return <img src={image.urls.thumb} key={image.id} />
+
+    return this.state.images.map(image => {      
+      return <div class="col-sm-6 col-md-5"><div class="thumbnail"><img  class="lightbox" src={image.urls.thumb} key={image.id}/></div></div>
     })
   }
 
   render() {
     return (<div>
-      <div class="box">
-        <div class="container-4">
-          <input type="search" id="search" placeholder="Search..." onChange={this.trackQueryValue} />
-          <button onClick={this.search} class="icon"><i class="fa fa-search"></i></button>
+      <input type="text" onChange={this.trackQueryValue} id="namanyay-search-box" placeholder="Buscar..."/>
+      <button onClick={this.search} id="namanyay-search-btn">Buscar</button>
+      <div class="tz-gallery">
+        <div class="row">
+          {this.images()}
         </div>
       </div>
-      
-      
-      <div>{this.images()}</div>
     </div>);
   }
 }
